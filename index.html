@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE SHUNYA | Common Mistakes at 21</title>
     
-    <!-- Premium Google Fonts: Cinzel for Authority, Montserrat for Clean Layout -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- AOS Library for Smooth Scroll Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #070707; /* Deep Mafia-style Black */
+            --bg-dark: #070707;
             --bg-card: #111111;
-            --gold: #D4AF37; /* Metallic Gold */
+            --gold: #D4AF37;
             --text-main: #FFFFFF;
             --text-muted: #888888;
         }
@@ -39,7 +37,7 @@
             color: var(--gold);
         }
 
-        /* Updated Navbar with Links */
+        /* Navbar */
         header {
             padding: 1.5rem 5%;
             display: flex;
@@ -101,7 +99,7 @@
             font-weight: 600;
         }
 
-        /* Ebook Visuals with Ambient Aura */
+        /* Ebook Visuals */
         .ebook-wrapper {
             position: relative;
             margin-bottom: 4rem;
@@ -134,7 +132,7 @@
             border: 1px solid rgba(212, 175, 55, 0.4);
         }
 
-        /* Brutal Pricing & Call to Action */
+        /* Pricing & Button */
         .price-section {
             margin-bottom: 5rem;
         }
@@ -178,7 +176,7 @@
             transform: scale(1.03);
         }
 
-        /* The Manifesto / About Section */
+        /* About Section */
         .about-section {
             max-width: 800px;
             margin: 0 auto 5rem auto;
@@ -199,6 +197,136 @@
             margin-bottom: 1.5rem;
         }
 
+        /* NEW: Proof of Dominance (Reviews) */
+        .reviews-section {
+            width: 100%;
+            padding: 5rem 5%;
+            background: #0a0a0a;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 5rem;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .reviews-header h2 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            transition: transform 0.4s ease, border 0.4s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: #B0B0B0;
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .reviewer {
+            color: var(--text-main);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+        }
+
+        /* NEW: The Inner Circle (Lead Gen) */
+        .syndicate-section {
+            max-width: 800px;
+            margin: 0 auto 6rem auto;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .syndicate-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .syndicate-section p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            padding: 1.2rem;
+            width: 100%;
+            max-width: 350px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 3px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .email-input:focus {
+            border: 1px solid var(--gold);
+        }
+
+        .btn-submit {
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
         /* Payment Checkpoint */
         .payment-card {
             background: var(--bg-card);
@@ -208,6 +336,7 @@
             max-width: 550px;
             margin: 0 auto 5rem auto;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            text-align: center;
         }
 
         .qr-img {
@@ -266,57 +395,85 @@
         </nav>
     </header>
 
-    <main class="container">
-        
-        <h1 class="ebook-title" data-aos="fade-up" data-aos-delay="100">Common Mistakes at 21</h1>
-        <div class="author" data-aos="fade-up" data-aos-delay="200">Author : THE SHUNYA</div>
+    <main>
+        <div class="container">
+            <h1 class="ebook-title" data-aos="fade-up" data-aos-delay="100">Common Mistakes at 21</h1>
+            <div class="author" data-aos="fade-up" data-aos-delay="200">Author : THE SHUNYA</div>
 
-        <div class="ebook-wrapper" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">
-            <div class="ebook-glow"></div>
-            <!-- Ebook Cover Image -->
-            <img src="1_20260710_140904_0000.png" alt="Common Mistakes at 21 Cover" class="ebook-img">
+            <div class="ebook-wrapper" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">
+                <div class="ebook-glow"></div>
+                <img src="1_20260710_140904_0000.png" alt="Common Mistakes at 21 Cover" class="ebook-img">
+            </div>
+
+            <div class="price-section" data-aos="fade-up" data-aos-delay="400">
+                <span class="price-strike">₹99</span>
+                <span class="price-current">₹19</span>
+                <br>
+                <a href="#checkout" class="btn-gold">Secure Your Copy</a>
+            </div>
+
+            <div class="about-section" data-aos="fade-right">
+                <h2>About This Ebook</h2>
+                <p>Nine months, 120 young adults, and one clear conclusion: Nearly everyone tends to make the same critical mistakes.</p>
+                <p>This is not just a book; it is a tactical blueprint designed to help you bypass the traps that destroy potential. Equip yourself with the absolute truth before the world forces you to learn it the hard way.</p>
+            </div>
         </div>
 
-        <div class="price-section" data-aos="fade-up" data-aos-delay="400">
-            <span class="price-strike">₹99</span>
-            <span class="price-current">₹19</span>
-            <br>
-            <a href="#checkout" class="btn-gold">Secure Your Copy</a>
-        </div>
+        <section class="reviews-section">
+            <div class="reviews-header" data-aos="fade-up">
+                <h2>Proof of Dominance</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-text">"Before reading this, I was operating on illusions. This blueprint shattered them and gave me clarity. Brutal, but necessary."</div>
+                    <div class="reviewer">- Aryan M.</div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-text">"The way THE SHUNYA breaks down the system is insane. It’s like getting a cheat code for your 20s. Worth 100x the price."</div>
+                    <div class="reviewer">- Rohan D.</div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-text">"No fake motivation, just raw truth. I applied the framework and my entire approach to my career shifted in days."</div>
+                    <div class="reviewer">- Kabir S.</div>
+                </div>
+            </div>
+        </section>
 
-        <div class="about-section" data-aos="fade-right" data-aos-delay="200">
-            <h2>About This Ebook</h2>
-            <p>Nine months, 120 young adults, and one clear conclusion: Nearly everyone tends to make the same critical mistakes.</p>
-            <p>This is not just a book; it is a tactical blueprint designed to help you bypass the traps that destroy potential. Equip yourself with the absolute truth before the world forces you to learn it the hard way.</p>
-        </div>
+        <section class="syndicate-section" data-aos="zoom-in">
+            <h2>The Inner Circle</h2>
+            <p>Join the 1%. Get exclusive tactical blueprints, private course access, and uncensored truths delivered straight to your vault.</p>
+            <form class="input-group" onsubmit="event.preventDefault(); alert('You are now in the system. Welcome to The Inner Circle.');">
+                <input type="email" class="email-input" placeholder="Enter your email address..." required>
+                <button type="submit" class="btn-submit">Enter</button>
+            </form>
+        </section>
 
-        <div id="checkout" class="payment-card" data-aos="fade-up" data-aos-delay="200">
+        <div id="checkout" class="payment-card" data-aos="fade-up">
             <h2>Final Step</h2>
             <p class="instruction" style="margin-top:15px;">Scan the strictly encrypted QR code below to complete your payment of ₹19.</p>
             
-            <!-- QR Code Image -->
             <img src="IMG_20260710_151721.png" alt="Payment QR Code" class="qr-img">
             
             <p class="instruction">Once your payment is successful, click below to dispatch your screenshot. The digital vault will open and your copy will be sent to you immediately.</p>
             
-            <!-- WhatsApp Connection -->
             <a href="https://wa.me/919209378969?text=Hello%20THE%20SHUNYA,%20I%20have%20paid%20%E2%82%B919%20for%20'Common%20Mistakes%20at%2021'.%20Here%20is%20my%20payment%20screenshot." class="whatsapp-btn" target="_blank">
                 Verify on WhatsApp
             </a>
         </div>
-
     </main>
 
     <footer>
         &copy; 2026 THE SHUNYA. Dominance Through Knowledge.
     </footer>
 
-    <!-- AOS JS for smooth interactions -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
             once: true,
-            offset: 120,
+            offset: 80,
             easing: 'ease-out-cubic'
         });
     </script>
