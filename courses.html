@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SHUNYA | Digital Vault</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #070707;
+            --bg-card: #111111;
+            --gold: #D4AF37;
+            --text-main: #FFFFFF;
+            --text-muted: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, .brand {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+        }
+
+        /* Navigation */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            background: rgba(7, 7, 7, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Vault Header */
+        .vault-header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .vault-header h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .vault-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* The Grid System (YouTube Style) */
+        .grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 6rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1px));
+            gap: 2.5rem;
+            justify-content: center;
+        }
+
+        .course-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        /* Trending Badge */
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #B8860B, #D4AF37);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 380px; /* Tall aspect ratio for ebooks/posters */
+            overflow: hidden;
+            background: #000;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .course-card:hover .card-img {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 5px;
+            color: var(--gold);
+        }
+
+        .card-author {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 15px;
+        }
+
+        .card-price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .btn-small {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover .btn-small {
+            background: var(--gold);
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #555;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header data-aos="fade-down" data-aos-duration="1000">
+        <a href="index.html" class="brand">THE SHUNYA</a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#" style="color: var(--gold);">Vault</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="vault-header" data-aos="fade-up">
+            <h1>The Digital Vault</h1>
+            <p>Exclusive masterclasses and blueprints for the top 1%</p>
+        </div>
+
+        <div class="grid-container">
+            
+            <!-- CARD 1 : COMMON MISTAKES AT 21 -->
+            <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="badge">Trending</div>
+                <div class="card-img-wrapper">
+                    <!-- Maine teri existing ebook image daal di hai demo ke liye -->
+                    <img src="1_20260710_140904_0000.png" alt="Common Mistakes at 21" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Common Mistakes at 21</div>
+                    <div class="card-author">By THE SHUNYA</div>
+                    <div class="card-footer">
+                        <span class="card-price">₹19</span>
+                        <a href="index.html" class="btn-small">Secure</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 : DUMMY COURSE (Future Slot) -->
+            <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?auto=format&fit=crop&w=600&q=80" alt="Dark Psychology" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">The Power Dynamics</div>
+                    <div class="card-author">By NOOR</div>
+                    <div class="card-footer">
+                        <span class="card-price">₹149</span>
+                        <a href="#" class="btn-small">Pre-Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 : DUMMY COURSE (Future Slot) -->
+            <div class="course-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Tech Masterclass" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Digital Ecosystems</div>
+                    <div class="card-author">By SHRUTI</div>
+                    <div class="card-footer">
+                        <span class="card-price">₹299</span>
+                        <a href="#" class="btn-small">Coming Soon</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 THE SHUNYA. Dominance Through Knowledge.
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+            easing: 'ease-out-cubic'
+        });
+    </script>
+</body>
+</html>
+
