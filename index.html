@@ -974,6 +974,233 @@
         }
     });
 </script>
+<!-- ========================================== -->
+<!-- MASTER OVERRIDE: THE SHUNYA COURSE ENGINE FIX -->
+<!-- ========================================== -->
+<script>
+    // 1. Force system to read ONLY from the permanent database
+    let finalCourses = JSON.parse(localStorage.getItem('shunya_master_courses'));
+    
+    // Agar database khali hai, toh default courses daal do
+    if(!finalCourses || finalCourses.length === 0) {
+        finalCourses = [
+            { title: "Common Mistakes at 21", price: "190 Coins / ₹19", img: "1_20260710_140904_0000.png" },
+            { title: "The Dark Psychology", price: "500 Coins / ₹99", img: "https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?w=400" }
+        ];
+        localStorage.setItem('shunya_master_courses', JSON.stringify(finalCourses));
+    }
+
+    // 2. Hijack the Admin Upload Function
+    window.adminUploadCourse = function() {
+        const title = document.getElementById('new-course-title').value.trim();
+        const price = document.getElementById('new-course-price').value.trim();
+        let img = document.getElementById('new-course-img').value.trim();
+
+        // Validation check
+        if(!title || !price) {
+            alert("Title aur Price mandatory hai bhai!");
+            return;
+        }
+        
+        // Default mafia aesthetic image agar image link blank ho
+        if(!img) {
+            img = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400"; 
+        }
+
+        // Naye course ko array me daalo
+        finalCourses.push({ title: title, price: price, img: img });
+        
+        // DATABASE ME PERMANENT SAVE KARO
+        localStorage.setItem('shunya_master_courses', JSON.stringify(finalCourses));
+
+        // Input boxes wapas khali kar do
+        document.getElementById('new-course-title').value = "";
+        document.getElementById('new-course-price').value = "";
+        document.getElementById('new-course-img').value = "";
+
+        // Screen ko turant update karo bina refresh kiye
+        forceRenderGrid();
+        alert("Asset Deployed! Premium Vault check kar.");
+    };
+
+    // 3. The Ultimate Rendering Engine
+    function forceRenderGrid() {
+        const courseGrid = document.getElementById('course-grid');
+        if(courseGrid) {
+            courseGrid.innerHTML = ""; // Purana grid saaf karo
+            
+            // Database se nikal kar ek-ek course chhaap do
+            finalCourses.forEach(c => {
+                courseGrid.innerHTML += `
+                    <div class="card" style="background:#111; border:1px solid #222; border-radius:12px; overflow:hidden; position:relative;">
+                        <img src="${c.img}" style="width:100%; height:180px; object-fit:cover; border-bottom:2px solid #D4AF37;">
+                        <div class="card-body" style="padding:1.5rem;">
+                            <h3 class="card-title" style="color:#D4AF37; font-family:'Cinzel', serif; margin-bottom:10px; font-size:1.1rem;">${c.title}</h3>
+                            <p class="price-tag" style="color:#aaa; font-size:0.9rem; margin-bottom:15px; font-weight:bold;">${c.price}</p>
+                            <button onclick="document.getElementById('payment-modal').style.display='flex'" style="background:linear-gradient(135deg, #B8860B, #D4AF37); color:#000; padding:12px; width:100%; border:none; font-weight:800; cursor:pointer; text-transform:uppercase; border-radius:4px;">Unlock Asset</button>
+                        </div>
+                    </div>`;
+            });
+        }
+    }
+
+    // Jaise hi website load ho, force renderer chala do
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            forceRenderGrid();
+        }, 500); 
+    });
+</script>
+<!-- ========================================== -->
+<!-- THE CYBER-GLOW SYNDICATE ENGINE (10 NEW GAMING TASKS) -->
+<!-- ========================================== -->
+
+<style>
+    /* GenZ Cyber-Glow Aesthetics */
+    .cyber-card {
+        background: rgba(10, 10, 12, 0.9);
+        border: 1px solid rgba(255, 51, 51, 0.3);
+        border-radius: 12px;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 15px rgba(255, 51, 51, 0.1);
+    }
+
+    .cyber-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 0 30px rgba(255, 51, 51, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2);
+        border-color: #ff3333;
+    }
+
+    .neon-badge {
+        position: absolute;
+        top: 15px;
+        right: -30px;
+        background: #ff3333;
+        color: #fff;
+        padding: 5px 30px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transform: rotate(45deg);
+        box-shadow: 0 0 15px #ff3333;
+    }
+
+    .glow-title {
+        color: #fff;
+        font-family: 'Cinzel', serif;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .glow-btn {
+        background: transparent;
+        color: #00c6ff;
+        border: 1px solid #00c6ff;
+        padding: 10px;
+        width: 100%;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(0, 198, 255, 0.2);
+    }
+
+    .glow-btn:hover {
+        background: #00c6ff;
+        color: #000;
+        box-shadow: 0 0 25px #00c6ff;
+    }
+
+    /* Target specific colors for different vibes */
+    .glow-btn.gold { border-color: #D4AF37; color: #D4AF37; box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+    .glow-btn.gold:hover { background: #D4AF37; color: #000; box-shadow: 0 0 25px #D4AF37; }
+</style>
+
+<script>
+    // 10 Advanced Gaming & Ecosystem Surveys
+    const cyberGamingSurveys = [
+        { title: "Master Rank Optimization: Device settings for extreme frame-rates.", reward: 100, type: "blue" },
+        { title: "V-Cash Economy: Designing sustainable virtual currencies in-game.", reward: 150, type: "gold" },
+        { title: "The Anti-Hero Lore: Crafting brutal, cinematic storylines.", reward: 200, type: "blue" },
+        { title: "Isometric Mini-Map Strategy: Tactical UI placement for survival.", reward: 120, type: "gold" },
+        { title: "100-Day Consistency: Translating physical discipline to gaming grinds.", reward: 250, type: "blue" },
+        { title: "Tokenized Creator Platforms: Monetizing digital skills seamlessly.", reward: 180, type: "gold" },
+        { title: "HUD Customization: Claw layouts vs Thumb efficiency.", reward: 90, type: "blue" },
+        { title: "Psychological Architecture: Structuring player hierarchies and ranks.", reward: 300, type: "gold" },
+        { title: "The Mafia Aesthetic: Integrating dark themes into modern UI.", reward: 150, type: "blue" },
+        { title: "Systemic World-Building: Connecting distinct characters into one universe.", reward: 400, type: "gold" }
+    ];
+
+    // Function to inject these glowing cards into the Survey Tab
+    function injectCyberSurveys() {
+        const surveyGrid = document.getElementById('survey-grid');
+        
+        // Agar survey-grid exist karta hai, toh usme ye neon cards append kar do
+        if(surveyGrid) {
+            surveyGrid.innerHTML = ""; // Purana basic grid saaf karo
+            
+            cyberGamingSurveys.forEach((survey, idx) => {
+                let btnClass = survey.type === 'gold' ? 'glow-btn gold' : 'glow-btn';
+                
+                surveyGrid.innerHTML += `
+                    <div class="cyber-card">
+                        <div class="neon-badge">Live</div>
+                        <h3 class="glow-title">${survey.title}</h3>
+                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:15px; font-weight:700;">Reward: <span style="color:#D4AF37;">${survey.reward} 🪙</span></p>
+                        <button class="${btnClass}" onclick="executeCyberTask(${survey.reward}, this)">Execute Task</button>
+                    </div>
+                `;
+            });
+        }
+    }
+
+    // Task Execution Logic (Adds V-Cash instantly)
+    function executeCyberTask(rewardAmount, btnElement) {
+        if(btnElement.innerText === "DATA EXTRACTED") return;
+
+        btnElement.innerText = "PROCESSING...";
+        btnElement.style.opacity = "0.7";
+        btnElement.style.cursor = "wait";
+
+        setTimeout(() => {
+            // Update the Vault
+            let currentCoins = parseInt(localStorage.getItem('shunya_wallet')) || 0;
+            localStorage.setItem('shunya_wallet', currentCoins + rewardAmount);
+            
+            // Visual Update
+            if(typeof updateWalletUI === 'function') updateWalletUI();
+            if(typeof injectProfileCard === 'function') injectProfileCard();
+            
+            btnElement.innerText = "DATA EXTRACTED";
+            btnElement.style.background = "#222";
+            btnElement.style.color = "#555";
+            btnElement.style.borderColor = "#333";
+            btnElement.style.boxShadow = "none";
+            btnElement.style.cursor = "not-allowed";
+
+            if(typeof showToast === 'function') {
+                showToast(`Task Complete. ${rewardAmount} V-Cash injected.`, 'success');
+            } else {
+                alert(`+${rewardAmount} V-Cash added to your Vault.`);
+            }
+        }, 1500);
+    }
+
+    // Auto-load the glowing surveys when the page starts
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            injectCyberSurveys();
+        }, 800);
+    });
+</script>
 
 </body>
 </html>
