@@ -756,25 +756,7 @@
             localStorage.setItem('shunya_user', savedData.username);
             if(typeof showToast === 'function') showToast(`Welcome back, ${savedData.username}.`, "success");
             document.getElementById('vault-auth').style.display = 'none';
-            if(typeof injectProfileCard === 'function') injectProfileCard();
-        } else {
-            if(typeof showToast === 'function') showToast("Access Denied. Incorrect credentials.", "error");
-        }
-    }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        const oldAuth = document.getElementById('auth-overlay');
-        if(oldAuth) oldAuth.remove(); 
-
-        if(localStorage.getItem('shunya_account') && localStorage.getItem('shunya_user')) {
-            document.getElementById('vault-auth').style.display = 'none';
-        }
-    });
-</script>
-
-<!-- ========================================== -->
-<!-- PART 8: THE SYNDICATE HIERARCHY & FOMO ENGINE -->
-<!-- ========================================== -->
 
 <!-- Live FOMO Pulse (Active Users) -->
 <div id="fomo-counter" style="position:fixed; bottom:80px; right:20px; background:rgba(10,10,10,0.9); border:1px solid rgba(212,175,55,0.4); padding:10px 20px; border-radius:30px; font-size:0.85rem; font-family:'Montserrat', sans-serif; font-weight:700; z-index:9999; display:flex; align-items:center; gap:12px; box-shadow:0 5px 20px rgba(0,0,0,0.8); backdrop-filter:blur(5px);">
