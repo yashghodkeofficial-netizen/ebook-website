@@ -1,174 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Common Mistakes at 21</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SHUNYA | Common Mistakes at 21</title>
+    
+    <!-- Premium Google Fonts: Cinzel for Authority, Montserrat for Clean Layout -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS Library for Smooth Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #070707; /* Deep Mafia-style Black */
+            --bg-card: #111111;
+            --gold: #D4AF37; /* Metallic Gold */
+            --text-main: #FFFFFF;
+            --text-muted: #888888;
+        }
 
-<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-body{
-background:#090909;
-color:white;
-}
+        h1, h2, h3, .brand {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+        }
 
-header{
-background:#000;
-padding:25px;
-text-align:center;
-}
+        /* Navbar / Header */
+        header {
+            padding: 2rem 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            background: rgba(7, 7, 7, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
 
-header h1{
-font-size:38px;
-color:#FFD700;
-}
+        .brand {
+            font-size: 2.2rem;
+            letter-spacing: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
 
-header p{
-margin-top:10px;
-font-size:20px;
-color:#bbb;
-}
+        /* Hero Section */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-.hero{
-padding:25px;
-text-align:center;
-}
+        .ebook-title {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+        }
 
-.cover{
-width:95%;
-max-width:420px;
-border-radius:18px;
-box-shadow:0 0 30px gold;
-}
+        .author {
+            font-size: 1rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
 
-.price{
-font-size:42px;
-font-weight:bold;
-color:#00ff88;
-margin-top:20px;
-}
+        /* Ebook Visuals with Ambient Aura */
+        .ebook-wrapper {
+            position: relative;
+            margin-bottom: 4rem;
+        }
 
-.buy{
-display:inline-block;
-margin-top:25px;
-padding:18px 45px;
-background:#ff9800;
-color:white;
-font-size:28px;
-border-radius:14px;
-text-decoration:none;
-transition:.3s;
-}
+        .ebook-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%; height: 90%;
+            background: var(--gold);
+            filter: blur(70px);
+            opacity: 0.12;
+            z-index: -1;
+            border-radius: 10px;
+        }
 
-.buy:hover{
-background:#ffb300;
-transform:scale(1.05);
-}
+        .ebook-img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
 
-.section{
-padding:30px;
-}
+        .ebook-img:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 35px 60px rgba(0,0,0,1);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
 
-.section h2{
-color:#FFD700;
-margin-bottom:20px;
-font-size:34px;
-}
+        /* Brutal Pricing & Call to Action */
+        .price-section {
+            margin-bottom: 5rem;
+        }
 
-.section p{
-font-size:22px;
-line-height:1.8;
-color:#ddd;
-}
-.qr{
-width:250px;
-border-radius:15px;
-margin-top:20px;
-}
+        .price-strike {
+            color: #555555;
+            text-decoration: line-through;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            font-weight: 400;
+        }
 
-footer{
-background:#000;
-padding:30px;
-text-align:center;
-font-size:18px;
-color:#999;
-margin-top:40px;
-}
+        .price-current {
+            font-size: 3.5rem;
+            color: var(--text-main);
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+        }
 
-.admin{
-background:#111;
-padding:30px;
-margin:30px;
-border-radius:15px;
-}
+        .btn-gold {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1.2rem 3.5rem;
+            background: linear-gradient(135deg, #B8860B, #D4AF37, #AA7C11);
+            color: #000000;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
 
-.admin input{
-width:100%;
-padding:15px;
-margin:10px 0;
-font-size:18px;
-}
+        .btn-gold:hover {
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            transform: scale(1.03);
+        }
 
-.admin button{
-padding:15px 30px;
-background:#FFD700;
-border:none;
-font-size:20px;
-cursor:pointer;
-border-radius:10px;
-}
+        /* The Manifesto / About Section */
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto 5rem auto;
+            text-align: left;
+            padding: 3rem;
+            border-left: 4px solid var(--gold);
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.03) 0%, transparent 100%);
+        }
 
-.course{
-background:#1b1b1b;
-padding:20px;
-border-radius:15px;
-margin-top:20px;
-display:none;
-}
+        .about-section h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
 
-.course img{
-width:100%;
-border-radius:10px;
-}
+        .about-section p {
+            color: #B0B0B0;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
 
-.course h3{
-margin-top:15px;
-font-size:28px;
-}
+        /* Payment Checkpoint */
+        .payment-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 4rem 3rem;
+            border-radius: 6px;
+            max-width: 550px;
+            margin: 0 auto 5rem auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
 
-.course a{
-display:inline-block;
-margin-top:15px;
-padding:12px 30px;
-background:#00c853;
-color:white;
-text-decoration:none;
-border-radius:10px;
-font-size:20px;
-}
+        .qr-img {
+            width: 220px;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            padding: 10px;
+            background: #fff;
+        }
 
-</style>
+        .instruction {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .whatsapp-btn {
+            background: transparent;
+            color: var(--text-main);
+            padding: 1rem 2.5rem;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            border: 1px solid #128C7E;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            border-color: #128C7E;
+            box-shadow: 0 10px 20px rgba(18, 140, 126, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #555;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>Common Mistakes at 21</h1>
-<p>Author : THE SHUNYA</p>
-</header>
+    <header data-aos="fade-down" data-aos-duration="1000">
+        <div class="brand">THE SHUNYA</div>
+    </header>
 
-<div class="hero">
+    <main class="container">
+        
+        <h1 class="ebook-title" data-aos="fade-up" data-aos-delay="100">Common Mistakes at 21</h1>
+        <div class="author" data-aos="fade-up" data-aos-delay="200">Author : THE SHUNYA</div>
 
-<img src="1_20260710_140904_0000.png" class="cover">
+        <div class="ebook-wrapper" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">
+            <div class="ebook-glow"></div>
+            <!-- Ebook Cover Image -->
+            <img src="1_20260710_140904_0000.png" alt="Common Mistakes at 21 Cover" class="ebook-img">
+        </div>
 
-<div class="price">₹99 Only</div>
+        <div class="price-section" data-aos="fade-up" data-aos-delay="400">
+            <span class="price-strike">₹99</span>
+            <span class="price-current">₹19</span>
+            <br>
+            <a href="#checkout" class="btn-gold">Secure Your Copy</a>
+        </div>
 
-<a class="buy" href="#pay">Buy Now</a>
+        <div class="about-section" data-aos="fade-right" data-aos-delay="200">
+            <h2>About This Ebook</h2>
+            <p>Nine months, 120 young adults, and one clear conclusion: Nearly everyone tends to make the same critical mistakes.</p>
+            <p>This is not just a book; it is a tactical blueprint designed to help you bypass the traps that destroy potential. Equip yourself with the absolute truth before the world forces you to learn it the hard way.</p>
+        </div>
 
-</div>
+        <div id="checkout" class="payment-card" data-aos="fade-up" data-aos-delay="200">
+            <h2>Final Step</h2>
+            <p class="instruction" style="margin-top:15px;">Scan the strictly encrypted QR code below to complete your payment of ₹19.</p>
+            
+            <!-- QR Code Image -->
+            <img src="IMG_20260710_151721.png" alt="Payment QR Code" class="qr-img">
+            
+            <p class="instruction">Once your payment is successful, click below to dispatch your screenshot. The digital vault will open and your copy will be sent to you immediately.</p>
+            
+            <!-- WhatsApp Connection -->
+            <a href="https://wa.me/919209378969?text=Hello%20THE%20SHUNYA,%20I%20have%20paid%20%E2%82%B919%20for%20'Common%20Mistakes%20at%2021'.%20Here%20is%20my%20payment%20screenshot." class="whatsapp-btn" target="_blank">
+                Verify on WhatsApp
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        &copy; 2026 THE SHUNYA. Dominance Through Knowledge.
+    </footer>
+
+    <!-- AOS JS for smooth interactions -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 120,
+            easing: 'ease-out-cubic'
+        });
+    </script>
+</body>
+</html>
