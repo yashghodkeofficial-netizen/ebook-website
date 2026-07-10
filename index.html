@@ -39,10 +39,12 @@
             color: var(--gold);
         }
 
-        /* Navbar / Header */
+        /* Updated Navbar with Links */
         header {
-            padding: 2rem 5%;
-            text-align: center;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
             background: rgba(7, 7, 7, 0.9);
             position: sticky;
@@ -52,10 +54,25 @@
         }
 
         .brand {
-            font-size: 2.2rem;
-            letter-spacing: 4px;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
             font-weight: 800;
             text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
         }
 
         /* Hero Section */
@@ -242,7 +259,11 @@
 <body>
 
     <header data-aos="fade-down" data-aos-duration="1000">
-        <div class="brand">THE SHUNYA</div>
+        <a href="index.html" class="brand">THE SHUNYA</a>
+        <nav class="nav-links">
+            <a href="#" style="color: var(--gold);">Home</a>
+            <a href="courses.html">Vault</a>
+        </nav>
     </header>
 
     <main class="container">
