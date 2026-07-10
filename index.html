@@ -3,479 +3,775 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE SHUNYA | Common Mistakes at 21</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <title>THE SHUNYA | Digital Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-dark: #070707;
-            --bg-card: #111111;
-            --gold: #D4AF37;
-            --text-main: #FFFFFF;
-            --text-muted: #888888;
-        }
+        :root { --bg: #070707; --card: #111111; --gold: #D4AF37; --text: #FFFFFF; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif; padding-bottom: 80px; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Top Nav */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid #222; }
+        .brand { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem; font-weight: 800; }
+        .wallet-display { color: var(--gold); font-weight: 600; font-family: monospace; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+        /* Content Pages */
+        .page { display: none; padding: 20px; }
+        .page.active { display: block; }
 
-        h1, h2, h3, .brand {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-        }
-
-        /* Navbar */
-        header {
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            background: rgba(7, 7, 7, 0.9);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .brand {
-            font-size: 1.8rem;
-            letter-spacing: 3px;
-            font-weight: 800;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-
-        .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        /* Hero Section */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .ebook-title {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
-        }
-
-        .author {
-            font-size: 1rem;
-            color: var(--text-muted);
-            letter-spacing: 3px;
-            margin-bottom: 4rem;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* Ebook Visuals */
-        .ebook-wrapper {
-            position: relative;
-            margin-bottom: 4rem;
-        }
-
-        .ebook-glow {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%; height: 90%;
-            background: var(--gold);
-            filter: blur(70px);
-            opacity: 0.12;
-            z-index: -1;
-            border-radius: 10px;
-        }
-
-        .ebook-img {
-            width: 100%;
-            max-width: 380px;
-            border-radius: 6px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        .ebook-img:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 35px 60px rgba(0,0,0,1);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-        }
-
-        /* Pricing & Button */
-        .price-section {
-            margin-bottom: 5rem;
-        }
-
-        .price-strike {
-            color: #555555;
-            text-decoration: line-through;
-            font-size: 1.5rem;
-            margin-right: 15px;
-            font-weight: 400;
-        }
-
-        .price-current {
-            font-size: 3.5rem;
-            color: var(--text-main);
-            font-weight: 600;
-            font-family: 'Cinzel', serif;
-        }
-
-        .btn-gold {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1.2rem 3.5rem;
-            background: linear-gradient(135deg, #B8860B, #D4AF37, #AA7C11);
-            color: #000000;
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-weight: 800;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            border-radius: 3px;
-            text-transform: uppercase;
+        /* Grid */
+        .container { max-width: 1200px; margin: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        
+        /* Bottom Navigation */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #333; z-index: 1000; }
+        .nav-item { cursor: pointer; color: #777; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; text-align: center; }
+        .nav-item.active { color: var(--gold); }
+                /* --- PART 2: COURSE & SURVEY CARDS --- */
+        
+        .card { 
+            background: var(--card); 
+            border: 1px solid #222; 
+            border-radius: 12px; 
+            overflow: hidden; 
             transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            position: relative;
         }
 
-        .btn-gold:hover {
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
-            transform: scale(1.03);
-        }
-
-        /* About Section */
-        .about-section {
-            max-width: 800px;
-            margin: 0 auto 5rem auto;
-            text-align: left;
-            padding: 3rem;
-            border-left: 4px solid var(--gold);
-            background: linear-gradient(90deg, rgba(212, 175, 55, 0.03) 0%, transparent 100%);
-        }
-
-        .about-section h2 {
-            margin-bottom: 1.5rem;
-            font-size: 2.2rem;
-        }
-
-        .about-section p {
-            color: #B0B0B0;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* NEW: Proof of Dominance (Reviews) */
-        .reviews-section {
-            width: 100%;
-            padding: 5rem 5%;
-            background: #0a0a0a;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            margin-bottom: 5rem;
-        }
-
-        .reviews-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .reviews-header h2 {
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .review-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            padding: 2.5rem 2rem;
-            border-radius: 6px;
-            transition: transform 0.4s ease, border 0.4s ease;
-        }
-
-        .review-card:hover {
+        .card:hover { 
+            border-color: var(--gold); 
             transform: translateY(-8px);
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
         }
 
-        .stars {
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
+        .card img { 
+            width: 100%; 
+            height: 180px; 
+            object-fit: cover; 
+            border-bottom: 2px solid var(--gold);
         }
 
-        .review-text {
-            color: #B0B0B0;
-            font-style: italic;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
+        .card-body { padding: 1.5rem; }
 
-        .reviewer {
-            color: var(--text-main);
-            font-weight: 700;
+        .card-title { font-family: 'Cinzel', serif; margin-bottom: 10px; color: var(--gold); }
+
+        .price-tag { font-size: 0.9rem; margin-bottom: 15px; color: #aaa; }
+
+        .btn-gold { 
+            background: linear-gradient(135deg, #B8860B, #D4AF37); 
+            color: #000; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 6px; 
+            font-weight: 800; 
+            cursor: pointer; 
+            width: 100%; 
             text-transform: uppercase;
-            font-size: 0.85rem;
             letter-spacing: 1px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 15px;
+            margin-top: 10px;
         }
 
-        /* NEW: The Inner Circle (Lead Gen) */
-        .syndicate-section {
-            max-width: 800px;
-            margin: 0 auto 6rem auto;
-            text-align: center;
-            padding: 4rem 2rem;
-            background: var(--bg-card);
-            border-radius: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+        .badge { 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            background: var(--gold); 
+            color: #000; 
+            padding: 4px 8px; 
+            border-radius: 4px; 
+            font-size: 0.7rem; 
+            font-weight: 800; 
         }
 
-        .syndicate-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+        /* Responsive Fixes */
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
         }
-
-        .syndicate-section p {
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-size: 1rem;
-        }
-
-        .input-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .email-input {
-            padding: 1.2rem;
-            width: 100%;
-            max-width: 350px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            border-radius: 3px;
-            outline: none;
-            transition: border 0.3s;
-        }
-
-        .email-input:focus {
-            border: 1px solid var(--gold);
-        }
-
-        .btn-submit {
-            padding: 1.2rem 2.5rem;
-            background: transparent;
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            font-family: 'Cinzel', serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 3px;
-            transition: all 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: var(--gold);
-            color: #000;
-        }
-
-        /* Payment Checkpoint */
-        .payment-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            padding: 4rem 3rem;
-            border-radius: 6px;
-            max-width: 550px;
-            margin: 0 auto 5rem auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            text-align: center;
-        }
-
-        .qr-img {
-            width: 220px;
-            border-radius: 8px;
-            margin: 2rem 0;
-            border: 2px solid rgba(212, 175, 55, 0.5);
-            padding: 10px;
-            background: #fff;
-        }
-
-        .instruction {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .whatsapp-btn {
-            background: transparent;
-            color: var(--text-main);
-            padding: 1rem 2.5rem;
-            border-radius: 3px;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            display: inline-block;
-            border: 1px solid #128C7E;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-btn:hover {
-            background: #128C7E;
-            border-color: #128C7E;
-            box-shadow: 0 10px 20px rgba(18, 140, 126, 0.3);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #555;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+        
     </style>
 </head>
 <body>
 
-    <header data-aos="fade-down" data-aos-duration="1000">
-        <a href="index.html" class="brand">THE SHUNYA</a>
-        <nav class="nav-links">
-            <a href="#" style="color: var(--gold);">Home</a>
-            <a href="courses.html">Vault</a>
-        </nav>
-    </header>
+<header>
+    <div class="brand">THE SHUNYA</div>
+    <div class="wallet-display">🪙 1,250 Coins</div>
+</header>
 
-    <main>
-        <div class="container">
-            <h1 class="ebook-title" data-aos="fade-up" data-aos-delay="100">Common Mistakes at 21</h1>
-            <div class="author" data-aos="fade-up" data-aos-delay="200">Author : THE SHUNYA</div>
+<!-- PAGES -->
+<div id="home" class="page active">
+    <div class="container"><h1>Welcome, Leader.</h1></div>
+</div>
 
-            <div class="ebook-wrapper" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">
-                <div class="ebook-glow"></div>
-                <img src="1_20260710_140904_0000.png" alt="Common Mistakes at 21 Cover" class="ebook-img">
-            </div>
+<div id="courses" class="page">
+    <div class="container"><h2>Premium Vault</h2><div class="grid" id="course-grid"></div></div>
+</div>
 
-            <div class="price-section" data-aos="fade-up" data-aos-delay="400">
-                <span class="price-strike">₹99</span>
-                <span class="price-current">₹19</span>
-                <br>
-                <a href="#checkout" class="btn-gold">Secure Your Copy</a>
-            </div>
+<div id="surveys" class="page">
+    <div class="container"><h2>Complete Tasks</h2><div class="grid" id="survey-grid"></div></div>
+</div>
 
-            <div class="about-section" data-aos="fade-right">
-                <h2>About This Ebook</h2>
-                <p>Nine months, 120 young adults, and one clear conclusion: Nearly everyone tends to make the same critical mistakes.</p>
-                <p>This is not just a book; it is a tactical blueprint designed to help you bypass the traps that destroy potential. Equip yourself with the absolute truth before the world forces you to learn it the hard way.</p>
-            </div>
+<div id="wallet" class="page">
+    <div class="container" style="text-align:center;">
+        <div style="padding:40px; background:#111; border:1px solid #333; border-radius:15px;">
+            <h3>Balance</h3><h1 style="font-size:3rem; color:var(--gold);">1,250 🪙</h1>
         </div>
+    </div>
+</div>
 
-        <section class="reviews-section">
-            <div class="reviews-header" data-aos="fade-up">
-                <h2>Proof of Dominance</h2>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stars">★★★★★</div>
-                    <div class="review-text">"Before reading this, I was operating on illusions. This blueprint shattered them and gave me clarity. Brutal, but necessary."</div>
-                    <div class="reviewer">- Aryan M.</div>
-                </div>
-                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stars">★★★★★</div>
-                    <div class="review-text">"The way THE SHUNYA breaks down the system is insane. It’s like getting a cheat code for your 20s. Worth 100x the price."</div>
-                    <div class="reviewer">- Rohan D.</div>
-                </div>
-                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stars">★★★★★</div>
-                    <div class="review-text">"No fake motivation, just raw truth. I applied the framework and my entire approach to my career shifted in days."</div>
-                    <div class="reviewer">- Kabir S.</div>
-                </div>
-            </div>
-        </section>
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+    <div class="nav-item active" onclick="switchTab('home', this)">Home</div>
+    <div class="nav-item" onclick="switchTab('courses', this)">Courses</div>
+    <div class="nav-item" onclick="switchTab('surveys', this)">Surveys</div>
+    <div class="nav-item" onclick="switchTab('wallet', this)">Wallet</div>
+</div>
+<div id="payment-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center; backdrop-filter: blur(5px);">
+    <div style="background:var(--card); padding:2rem; border-radius:12px; text-align:center; border:1px solid var(--gold); max-width:400px; width:90%; position:relative;">
+        <h2 style="color:var(--gold); font-family:'Cinzel', serif; margin-bottom:5px;">Unlock Asset</h2>
+        <p style="color:#888; font-size:0.9rem; margin-bottom:20px;">Scan to pay the exact amount</p>
+        
+        <img src="IMG_20260710_151721.png" style="width:200px; border-radius:8px; border:2px solid #333; margin-bottom:20px; background:#fff; padding:10px;">
+        
+        <a href="https://wa.me/919209378969?text=Hello%20THE%20SHUNYA,%20I%20have%20completed%20the%20payment.%20Here%20is%20my%20screenshot." style="display:block; background:transparent; border:1px solid #128C7E; color:#fff; padding:12px; text-decoration:none; border-radius:4px; font-weight:600; text-transform:uppercase; margin-bottom:15px; letter-spacing:1px; transition: 0.3s;">
+            Verify on WhatsApp
+        </a>
+        
+        <button onclick="closeModal()" style="background:transparent; color:#888; border:none; cursor:pointer; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:2px;">Cancel / Go Back</button>
+    </div>
+</div>
 
-        <section class="syndicate-section" data-aos="zoom-in">
-            <h2>The Inner Circle</h2>
-            <p>Join the 1%. Get exclusive tactical blueprints, private course access, and uncensored truths delivered straight to your vault.</p>
-            <form class="input-group" onsubmit="event.preventDefault(); alert('You are now in the system. Welcome to The Inner Circle.');">
-                <input type="email" class="email-input" placeholder="Enter your email address..." required>
-                <button type="submit" class="btn-submit">Enter</button>
-            </form>
-        </section>
+<script>
+    const courses = [
+        { title: "Common Mistakes at 21", price: "190 Coins / ₹19", img: "1_20260710_140904_0000.png" },
+        { title: "The Dark Psychology", price: "500 Coins / ₹99", img: "https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?w=400" },
+        { title: "Digital Brand Empire", price: "1500 Coins / ₹299", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" }
+    ];
 
-        <div id="checkout" class="payment-card" data-aos="fade-up">
-            <h2>Final Step</h2>
-            <p class="instruction" style="margin-top:15px;">Scan the strictly encrypted QR code below to complete your payment of ₹19.</p>
-            
-            <img src="IMG_20260710_151721.png" alt="Payment QR Code" class="qr-img">
-            
-            <p class="instruction">Once your payment is successful, click below to dispatch your screenshot. The digital vault will open and your copy will be sent to you immediately.</p>
-            
-            <a href="https://wa.me/919209378969?text=Hello%20THE%20SHUNYA,%20I%20have%20paid%20%E2%82%B919%20for%20'Common%20Mistakes%20at%2021'.%20Here%20is%20my%20payment%20screenshot." class="whatsapp-btn" target="_blank">
-                Verify on WhatsApp
-            </a>
-        </div>
-    </main>
+    const surveys = [
+        { title: "Ecosystem Feedback", reward: "50 Coins", link: "#" },
+        { title: "Future Course Voting", reward: "30 Coins", link: "#" }
+    ];
 
-    <footer>
-        &copy; 2026 THE SHUNYA. Dominance Through Knowledge.
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true,
-            offset: 80,
-            easing: 'ease-out-cubic'
+    function render() {
+        const courseGrid = document.getElementById('course-grid');
+        courseGrid.innerHTML = ""; 
+        courses.forEach(c => {
+            courseGrid.innerHTML += `
+                <div class="card">
+                    <img src="${c.img}">
+                    <div class="card-body">
+                        <h3 class="card-title">${c.title}</h3>
+                        <p class="price-tag">${c.price}</p>
+                        <button class="btn-gold" onclick="openModal()">Unlock Asset</button>
+                    </div>
+                </div>`;
         });
-    </script>
+
+        const surveyGrid = document.getElementById('survey-grid');
+        surveyGrid.innerHTML = ""; 
+        surveys.forEach(s => {
+            surveyGrid.innerHTML += `
+                <div class="card">
+                    <div class="badge">Reward</div>
+                    <div class="card-body">
+                        <h3 class="card-title">${s.title}</h3>
+                        <p class="price-tag">Earn ${s.reward}</p>
+                        <button class="btn-gold" onclick="alert('Survey portal opening soon...')">Start Task</button>
+                    </div>
+                </div>`;
+        });
+    }
+
+    function openModal() {
+        document.getElementById('payment-modal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('payment-modal').style.display = 'none';
+    }
+
+    function switchTab(id, el) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        el.classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    render();
+</script>
+</body>
+</html>
+<div id="toast-container" style="position:fixed; top:20px; right:20px; z-index:10000; display:flex; flex-direction:column; gap:15px; pointer-events:none;"></div>
+
+<script>
+    // --- ADVANCED WALLET & V-CASH ENGINE ---
+    
+    // 1. Initialize Real Wallet (Saves data in user's browser)
+    let userWallet = localStorage.getItem('shunya_wallet');
+    if(!userWallet) {
+        // Naye user ko 50 Coins ka Welcome Bonus
+        userWallet = 50; 
+        localStorage.setItem('shunya_wallet', 50);
+    }
+
+    // Live UI Update
+    function updateWalletUI() {
+        document.querySelectorAll('.wallet-display, #wallet h1').forEach(el => {
+            if(el.tagName === 'H1') el.innerHTML = `${userWallet} 🪙`;
+            else el.innerHTML = `🪙 ${userWallet} Coins`;
+        });
+    }
+
+    // 2. Premium Toast Notifications (No more cheap alerts)
+    function showToast(message, type="success") {
+        const toast = document.createElement('div');
+        toast.style.background = type === 'success' ? 'linear-gradient(135deg, #D4AF37, #B8860B)' : 'linear-gradient(135deg, #990000, #ff4444)';
+        toast.style.color = type === 'success' ? '#000' : '#fff';
+        toast.style.padding = '15px 25px';
+        toast.style.borderRadius = '8px';
+        toast.style.fontWeight = '800';
+        toast.style.fontFamily = "'Montserrat', sans-serif";
+        toast.style.boxShadow = '0 10px 30px rgba(0,0,0,0.8)';
+        toast.style.transform = 'translateX(120%)';
+        toast.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        toast.innerText = message;
+        
+        document.getElementById('toast-container').appendChild(toast);
+        
+        // Slide In
+        setTimeout(() => toast.style.transform = 'translateX(0)', 10);
+        
+        // Slide Out & Remove
+        setTimeout(() => {
+            toast.style.transform = 'translateX(120%)';
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    }
+
+    // 3. Survey Engine - Earn Real Coins!
+    function completeSurvey(rewardAmount, btnElement) {
+        if(btnElement.innerText === "Completed") return; // Prevent spam
+
+        btnElement.innerText = "Processing Data...";
+        btnElement.style.opacity = "0.6";
+        btnElement.style.cursor = "wait";
+        
+        // Fake processing time for psychological impact
+        setTimeout(() => {
+            userWallet = parseInt(userWallet) + parseInt(rewardAmount);
+            localStorage.setItem('shunya_wallet', userWallet); // Save to database
+            updateWalletUI(); // Update Screen instantly
+            
+            showToast(`Task Complete! +${rewardAmount} Coins added to your vault.`, 'success');
+            
+            btnElement.innerText = "Completed";
+            btnElement.style.background = "#222";
+            btnElement.style.color = "#888";
+            btnElement.style.cursor = "not-allowed";
+        }, 2000); 
+    }
+
+    // 4. Advanced Buy Logic (Smart Coin Detection)
+    function attemptPurchase(priceStr, courseName) {
+        // Price format is "190 Coins / ₹19" - We extract the "190"
+        let coinPrice = parseInt(priceStr.split(' ')[0]);
+        
+        if(parseInt(userWallet) >= coinPrice) {
+            // User has enough V-Cash! Deduct coins.
+            userWallet = parseInt(userWallet) - coinPrice;
+            localStorage.setItem('shunya_wallet', userWallet);
+            updateWalletUI();
+            
+            showToast(`Asset Unlocked: ${courseName}! Check your Email.`, 'success');
+        } else {
+            // Not enough coins. Open QR Code for Cash Payment.
+            showToast(`Insufficient V-Cash. Process via Real Currency.`, 'error');
+            setTimeout(() => openModal(), 1000);
+        }
+    }
+
+    // --- OVERRIDE OLD RENDER FUNCTION TO CONNECT ADVANCED ENGINE ---
+    function renderAdvanced() {
+        const courseGrid = document.getElementById('course-grid');
+        if(courseGrid) {
+            courseGrid.innerHTML = ""; 
+            courses.forEach(c => {
+                courseGrid.innerHTML += `
+                    <div class="card">
+                        <img src="${c.img}">
+                        <div class="card-body">
+                            <h3 class="card-title">${c.title}</h3>
+                            <p class="price-tag">${c.price}</p>
+                            <button class="btn-gold" onclick="attemptPurchase('${c.price}', '${c.title}')">Unlock Asset</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        const surveyGrid = document.getElementById('survey-grid');
+        if(surveyGrid) {
+            surveyGrid.innerHTML = ""; 
+            surveys.forEach(s => {
+                let numericReward = s.reward.split(' ')[0]; // Extract "50" from "50 Coins"
+                surveyGrid.innerHTML += `
+                    <div class="card">
+                        <div class="badge">Reward</div>
+                        <div class="card-body">
+                            <h3 class="card-title">${s.title}</h3>
+                            <p class="price-tag">Earn ${s.reward}</p>
+                            <button class="btn-gold" onclick="completeSurvey(${numericReward}, this)">Start Task</button>
+                        </div>
+                    </div>`;
+            });
+        }
+        
+        updateWalletUI(); // Load Wallet Balance on startup
+    }
+    
+    // Execute the advanced render on load
+    window.onload = () => {
+        renderAdvanced();
+    };
+</script>
+
+</body>
+</html>
+<div id="quiz-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(7,7,7,0.95); z-index:99999; justify-content:center; align-items:center; backdrop-filter:blur(8px);">
+    <div style="background:var(--card); padding:2.5rem; border-radius:12px; border:1px solid var(--gold); max-width:500px; width:90%; text-align:center;">
+        <h3 id="quiz-question" style="font-family:'Cinzel', serif; color:var(--gold); margin-bottom:20px; font-size:1.4rem;">Evaluating Mindset...</h3>
+        <div id="quiz-options" style="display:flex; flex-direction:column; gap:12px; margin-bottom:25px;"></div>
+        <button onclick="closeQuiz()" style="background:transparent; color:#555; border:none; cursor:pointer; font-weight:700; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;">Exit Evaluation</button>
+    </div>
+</div>
+
+<script>
+    // --- ADVANCED ADMIN & DYNAMIC UPLOAD SYSTEM ---
+
+    // 1. Secret Admin Panel Injector (Adds an elegant upload section inside Wallet/Settings Tab)
+    function injectAdminPanel() {
+        const walletPage = document.getElementById('wallet');
+        if (walletPage) {
+            const adminHtml = `
+                <div style="margin-top:40px; padding:30px; background:#0c0c0c; border:1px dashed rgba(212,175,55,0.3); border-radius:12px; text-align:left;">
+                    <h3 style="font-family:'Cinzel', serif; color:var(--gold); margin-bottom:15px; text-align:center;">Creator Control Vault</h3>
+                    <p style="color:#666; font-size:0.8rem; margin-bottom:20px; text-align:center;">Instantly deploy multiple ebooks or courses to the live grid.</p>
+                    
+                    <div style="display:flex; flex-direction:column; gap:15px;">
+                        <input type="text" id="new-course-title" placeholder="Course / Ebook Title..." style="padding:12px; background:#111; border:1px solid #222; color:#fff; border-radius:4px; font-family:'Montserrat'; outline:none;">
+                        <input type="text" id="new-course-price" placeholder="Price (e.g., 250 Coins / ₹29)..." style="padding:12px; background:#111; border:1px solid #222; color:#fff; border-radius:4px; font-family:'Montserrat'; outline:none;">
+                        <input type="text" id="new-course-img" placeholder="Cover Image Name or URL..." style="padding:12px; background:#111; border:1px solid #222; color:#fff; border-radius:4px; font-family:'Montserrat'; outline:none;">
+                        <button onclick="adminUploadCourse()" style="background:linear-gradient(135deg, #B8860B, #D4AF37); color:#000; padding:12px; border:none; border-radius:4px; font-weight:800; text-transform:uppercase; cursor:pointer; letter-spacing:1px;">Deploy Asset Live</button>
+                    </div>
+                </div>
+            `;
+            walletPage.querySelector('.container').innerHTML += adminHtml;
+        }
+    }
+
+    // Live Upload Functionality
+    function adminUploadCourse() {
+        const title = document.getElementById('new-course-title').value.trim();
+        const price = document.getElementById('new-course-price').value.trim();
+        let img = document.getElementById('new-course-img').value.trim();
+
+        if(!title || !price) {
+            showToast("Title and Price are mandatory fields.", "error");
+            return;
+        }
+        if(!img) img = "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400"; // Fallback placeholder
+
+        // Push into active courses database array
+        courses.push({ title: title, price: price, img: img });
+        
+        // Clear input forms
+        document.getElementById('new-course-title').value = "";
+        document.getElementById('new-course-price').value = "";
+        document.getElementById('new-course-img').value = "";
+
+        // Re-render the advanced grid instantly
+        renderAdvanced();
+        showToast(`Asset '${title}' deployed successfully! Check Premium Vault tab.`, "success");
+    }
+
+
+    // --- INTERACTIVE MCQ QUIZ SURVEY ENGINE ---
+    
+    const premiumQuizzes = [
+        {
+            question: "What is the primary psychological trap most individuals hit at age 21?",
+            options: ["Chasing short-term dopamine", "Investing early", "Building long-term assets", "Deep strategic planning"],
+            correct: 0,
+            reward: 100
+        },
+        {
+            question: "In high-ticket brand positioning, what does the color Gold signify?",
+            options: ["Cheap discount culture", "Absolute premium authority", "Average mass market", "Temporary hype"],
+            correct: 1,
+            reward: 150
+        }
+    ];
+
+    let currentActiveQuiz = null;
+
+    // Override the old survey function to open our premium quiz portal
+    function startInteractiveSurvey(quizIndex) {
+        currentActiveQuiz = premiumQuizzes[quizIndex];
+        
+        document.getElementById('quiz-question').innerText = currentActiveQuiz.question;
+        const optionsContainer = document.getElementById('quiz-options');
+        optionsContainer.innerHTML = "";
+
+        currentActiveQuiz.options.forEach((opt, idx) => {
+            optionsContainer.innerHTML += `
+                <button onclick="submitQuizAnswer(${idx})" style="background:#161616; border:1px solid #333; color:#fff; padding:12px; border-radius:6px; font-family:'Montserrat'; text-align:left; cursor:pointer; transition:0.3s; font-weight:600;">
+                    ${opt}
+                </button>
+            `;
+        });
+
+        document.getElementById('quiz-overlay').style.display = 'flex';
+    }
+
+    function submitQuizAnswer(selectedIdx) {
+        if(!currentActiveQuiz) return;
+
+        if(selectedIdx === currentActiveQuiz.correct) {
+            // Sahi Jawaab! Reward the user.
+            let reward = currentActiveQuiz.reward;
+            userWallet = parseInt(userWallet) + reward;
+            localStorage.setItem('shunya_wallet', userWallet);
+            updateWalletUI();
+            
+            showToast(`Correct Analysis! +${reward} V-Cash added.`, "success");
+            closeQuiz();
+        } else {
+            // Galat Jawaab! System error.
+            showToast("Strategic Error. Mindset evaluation failed. Try again.", "error");
+            closeQuiz();
+        }
+    }
+
+    function closeQuiz() {
+        document.getElementById('quiz-overlay').style.display = 'none';
+        currentActiveQuiz = null;
+    }
+
+
+    // --- HOOKING THE SYSTEMS TOGETHER ---
+    
+    // We adjust the initialization script to override buttons with our interactive elements
+    function patchEcommerceSystem() {
+        const surveyGrid = document.getElementById('survey-grid');
+        if(surveyGrid) {
+            surveyGrid.innerHTML = ""; // Wipe default slots
+            premiumQuizzes.forEach((q, idx) => {
+                surveyGrid.innerHTML += `
+                    <div class="card">
+                        <div class="badge" style="background:linear-gradient(135deg, #00c6ff, #0072ff); color:#fff;">Live Task</div>
+                        <div class="card-body">
+                            <h3 class="card-title">${q.question.substring(0, 35)}...</h3>
+                            <p class="price-tag">Reward: ${q.reward} Coins</p>
+                            <button class="btn-gold" onclick="startInteractiveSurvey(${idx})">Start Evaluation</button>
+                        </div>
+                    </div>`;
+            });
+        }
+        injectAdminPanel(); // Generate creator dashboard inside Wallet Tab
+    }
+
+    // Extend the existing window.onload to seamlessly fire up all features at once
+    const oldOnload = window.onload;
+    window.onload = () => {
+        if(oldOnload) oldOnload();
+        patchEcommerceSystem();
+    };
+</script>
+
+</body>
+</html>
+<div id="monster-energy-container" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; opacity:0.45; overflow:hidden;">
+    <canvas id="monsterCanvas"></canvas>
+</div>
+
+<style>
+    /* --- MONSTER VISUAL OVERRIDES --- */
+
+    /* 1. Heavy Breathing Aura on Brand & Core Headings */
+    .brand, h1, h2, .card-title {
+        position: relative;
+        animation: monsterBreathing 4s infinite alternate ease-in-out;
+        letter-spacing: 2px;
+    }
+
+    @keyframes monsterBreathing {
+        0% { 
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.15); 
+            filter: drop-shadow(0 0 2px rgba(0,0,0,1));
+        }
+        50% { 
+            text-shadow: 0 0 25px rgba(212, 175, 55, 0.5), 0 0 40px rgba(184, 134, 11, 0.3);
+            transform: scale(1.01);
+        }
+        100% { 
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.15); 
+        }
+    }
+
+    /* 2. Brutal Monster Glitch / Roar Effect on Button Hover */
+    .btn-gold {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+
+    .btn-gold:hover {
+        animation: monsterRoarGlitch 0.25s infinite linear;
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.5) !important;
+        background: linear-gradient(135deg, #D4AF37, #FFF, #B8860B) !important;
+    }
+
+    @keyframes monsterRoarGlitch {
+        0% { transform: translate(1px, 1px) rotate(0deg) scale(1.03); filter: contrast(1.2); }
+        20% { transform: translate(-1px, -1px) rotate(-0.5deg); filter: hue-rotate(5deg); }
+        40% { transform: translate(-2px, 0px) rotate(0.5deg); }
+        60% { transform: translate(1px, 1px) rotate(0deg); filter: contrast(1.5); }
+        80% { transform: translate(-1px, 1px) rotate(-0.5deg); }
+        100% { transform: translate(1px, -1px) rotate(0.5deg) scale(1.03); }
+    }
+
+    /* Adjusting card stacking context so sparks float behind text beautifully */
+    .card, .payment-card, .wallet-box, header, .bottom-nav {
+        position: relative;
+        z-index: 5;
+    }
+    
+    header, .bottom-nav {
+        background: rgba(7, 7, 7, 0.95) !important;
+    }
+</style>
+
+<script>
+    // --- MONSTER CANVAS PARTICLE SYSTEM (HIGH PERFORMANCE) ---
+    const mCanvas = document.getElementById('monsterCanvas');
+    const mCtx = mCanvas.getContext('2d');
+
+    function resizeMonsterCanvas() {
+        mCanvas.width = window.innerWidth;
+        mCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeMonsterCanvas);
+    resizeMonsterCanvas();
+
+    class MonsterSpark {
+        constructor() {
+            this.init();
+        }
+        init() {
+            this.x = Math.random() * mCanvas.width;
+            this.y = mCanvas.height + Math.random() * 100;
+            this.size = Math.random() * 2.5 + 0.8;
+            this.speedX = Math.random() * 0.8 - 0.4;
+            this.speedY = -(Math.random() * 1.8 + 0.6);
+            this.alpha = Math.random() * 0.6 + 0.2;
+            this.glow = Math.random() * 15 + 5;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            // Fade out as it reaches top
+            if (this.y < 50) {
+                this.alpha -= 0.01;
+            }
+            if (this.y < 0 || this.alpha <= 0) {
+                this.init();
+            }
+        }
+        draw() {
+            mCtx.save();
+            mCtx.globalAlpha = this.alpha;
+            mCtx.fillStyle = '#D4AF37';
+            mCtx.shadowBlur = this.glow;
+            mCtx.shadowColor = '#B8860B';
+            mCtx.beginPath();
+            mCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            mCtx.fill();
+            mCtx.restore();
+        }
+    }
+
+    const monsterSparkArray = [];
+    // 50 Aggressive floating sparks max for optimized performance on smartphones
+    const maxSparks = 50; 
+    for (let i = 0; i < maxSparks; i++) {
+        monsterSparkArray.push(new MonsterSpark());
+    }
+
+    function runMonsterEngine() {
+        mCtx.clearRect(0, 0, mCanvas.width, mCanvas.height);
+        for (let i = 0; i < monsterSparkArray.length; i++) {
+            monsterSparkArray[i].update();
+            monsterSparkArray[i].draw();
+        }
+        requestAnimationFrame(runMonsterEngine);
+    }
+
+    // Connect with previous loader architecture safely
+    const previousMonsterOnload = window.onload;
+    window.onload = () => {
+        if(previousMonsterOnload) previousMonsterOnload();
+        runMonsterEngine();
+    };
+</script>
+
+
+<!-- ========================================== -->
+<!-- PART 6: THE SHUNYA INTELLECT ENGINE (ADVANCED) -->
+<!-- ========================================== -->
+
+<!-- Live Momentum Ticker -->
+<div id="ticker" style="width:100%; background:rgba(212,175,55,0.05); border-top:1px solid rgba(212,175,55,0.2); border-bottom:1px solid rgba(212,175,55,0.2); padding:8px 0; overflow:hidden; position:relative; margin-top:10px; z-index:2;">
+    <div id="ticker-content" style="display:inline-block; white-space:nowrap; color:var(--gold); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; animation: tickerScroll 20s linear infinite;">
+        &nbsp; • &nbsp; SYSTEM STATUS: OPERATIONAL &nbsp; • &nbsp; NEW ASSET: DARK PSYCHOLOGY V2 ADDED &nbsp; • &nbsp; RECENT EARNER: ARYAN M. [+500 COINS] &nbsp; • &nbsp; THE SHUNYA IS LIVE &nbsp; • &nbsp; 
+    </div>
+</div>
+
+<style>
+    @keyframes tickerScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    
+    /* Deep Focus Mode Class */
+    .focus-mode {
+        filter: brightness(0.2);
+        transition: 0.5s;
+    }
+    .focus-overlay {
+        position: fixed; top:0; left:0; width:100%; height:100%; z-index:9998; background:rgba(0,0,0,0.8); display:none; pointer-events:none;
+    }
+</style>
+
+<!-- Focus Toggle Button (Add this near your Ebook description) -->
+<script>
+    // Focus Mode Logic
+    function toggleFocus() {
+        const body = document.body;
+        const main = document.querySelector('main');
+        body.classList.toggle('focus-mode');
+        main.style.filter = "brightness(5)"; // Keep main content visible
+        main.style.position = "relative";
+        main.style.zIndex = "9999";
+    }
+
+    // Ticker Logic (Adding another set to loop infinitely)
+    const ticker = document.getElementById('ticker-content');
+    ticker.innerHTML += ticker.innerHTML; 
+</script>
+
+<!-- Add Focus Toggle button near Ebook info -->
+<script>
+    const aboutSection = document.querySelector('.about-section');
+    if(aboutSection) {
+        aboutSection.innerHTML += `<button onclick="toggleFocus()" style="margin-top:20px; background:transparent; border:1px solid #444; color:#666; padding:8px 15px; border-radius:4px; cursor:pointer; font-size:0.7rem; text-transform:uppercase; letter-spacing:1px;">Enable Deep Focus Mode</button>`;
+    }
+</script>
+
+
+<!-- ========================================== -->
+<!-- PART 8: THE SYNDICATE HIERARCHY & FOMO ENGINE -->
+<!-- ========================================== -->
+
+<!-- Live FOMO Pulse (Active Users) -->
+<div id="fomo-counter" style="position:fixed; bottom:80px; right:20px; background:rgba(10,10,10,0.9); border:1px solid rgba(212,175,55,0.4); padding:10px 20px; border-radius:30px; font-size:0.85rem; font-family:'Montserrat', sans-serif; font-weight:700; z-index:9999; display:flex; align-items:center; gap:12px; box-shadow:0 5px 20px rgba(0,0,0,0.8); backdrop-filter:blur(5px);">
+    <div style="width:10px; height:10px; background:#ff3333; border-radius:50%; box-shadow:0 0 12px #ff3333; animation:pulseRed 1.5s infinite;"></div>
+    <span style="color:#fff;"><span id="live-users" style="color:var(--gold); font-size:1rem;">114</span> In System</span>
+</div>
+
+<style>
+    @keyframes pulseRed { 
+        0% { transform:scale(1); opacity:1; } 
+        50% { transform:scale(1.5); opacity:0.5; } 
+        100% { transform:scale(1); opacity:1; } 
+    }
+</style>
+
+<script>
+    // --- 1. THE FOMO ENGINE ---
+    // Simulates live users to create psychological urgency and authority
+    setInterval(() => {
+        let currentUsers = parseInt(document.getElementById('live-users').innerText);
+        let change = Math.floor(Math.random() * 9) - 3; // Fluctuate up and down
+        let newUsers = currentUsers + change;
+        if(newUsers < 85) newUsers = 85; 
+        if(newUsers > 400) newUsers = 380; 
+        document.getElementById('live-users').innerText = newUsers;
+    }, 4500);
+
+    // --- 2. THE SYNDICATE HIERARCHY (Rank System) ---
+    // As users earn V-Cash, their digital empire rank upgrades automatically
+    function checkUserRank() {
+        let coins = parseInt(localStorage.getItem('shunya_wallet')) || 0;
+        let rank = "Civilian";
+        let rankColor = "#888";
+
+        if (coins >= 100 && coins < 500) { rank = "Initiate"; rankColor = "#00c6ff"; }
+        else if (coins >= 500 && coins < 1500) { rank = "Syndicate Boss"; rankColor = "#ff007f"; }
+        else if (coins >= 1500) { rank = "The 1% Elite"; rankColor = "#D4AF37"; }
+
+        return { rank, rankColor };
+    }
+
+    // --- 3. DYNAMIC DIGITAL ID (Home Screen Profile Injector) ---
+    // Automatically creates a futuristic ID card on the Home Tab
+    function injectProfileCard() {
+        const homeTab = document.getElementById('home');
+        const container = homeTab.querySelector('.container');
+        const username = localStorage.getItem('shunya_user') || "Hustler";
+        const userRank = checkUserRank();
+
+        let idCard = document.getElementById('digital-id-card');
+        
+        if(!idCard) {
+            const idCardHTML = `
+                <div id="digital-id-card" style="margin-top:30px; background:linear-gradient(145deg, #111, #050505); border:1px solid #222; border-left:4px solid ${userRank.rankColor}; padding:25px; border-radius:8px; box-shadow:0 15px 30px rgba(0,0,0,0.6); position:relative; overflow:hidden; transition:0.4s;">
+                    <div style="position:absolute; top:-20px; right:-20px; font-size:6rem; opacity:0.03; font-family:'Cinzel'; pointer-events:none;">S</div>
+                    <h4 style="color:#555; text-transform:uppercase; letter-spacing:2px; font-size:0.75rem; margin-bottom:5px;">Digital Identity</h4>
+                    <h2 id="id-name" style="color:#fff; font-family:'Cinzel'; font-size:1.8rem; margin-bottom:15px; text-transform:uppercase;">${username}</h2>
+                    
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #222; padding-top:15px;">
+                        <div>
+                            <span style="display:block; color:#777; font-size:0.7rem; text-transform:uppercase;">Current Rank</span>
+                            <span id="id-rank" style="color:${userRank.rankColor}; font-weight:800; font-size:1rem; text-transform:uppercase; letter-spacing:1px;">${userRank.rank}</span>
+                        </div>
+                        <div style="text-align:right;">
+                            <span style="display:block; color:#777; font-size:0.7rem; text-transform:uppercase;">V-Cash Vault</span>
+                            <span id="id-coins" style="color:var(--gold); font-weight:800; font-size:1rem;">${localStorage.getItem('shunya_wallet') || 0} 🪙</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', idCardHTML);
+        } else {
+            // Update the existing card dynamically when coins increase
+            document.getElementById('id-name').innerText = username;
+            document.getElementById('id-rank').innerText = userRank.rank;
+            document.getElementById('id-rank').style.color = userRank.rankColor;
+            idCard.style.borderLeft = `4px solid ${userRank.rankColor}`;
+            document.getElementById('id-coins').innerText = `${localStorage.getItem('shunya_wallet') || 0} 🪙`;
+        }
+    }
+
+    // Hooking the ID Card injection into the platform's lifecycle
+    if (typeof renderAdvanced !== 'undefined') {
+        const oldRender = renderAdvanced;
+        renderAdvanced = function() {
+            oldRender();
+            injectProfileCard();
+        };
+    }
+    
+    // Trigger on load
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(injectProfileCard, 500); 
+    });
+
+</script>
 </body>
 </html>
