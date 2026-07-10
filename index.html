@@ -773,5 +773,109 @@
     });
 
 </script>
+<!-- ========================================== -->
+<!-- THE SHUNYA ADVANCED VAULT SECURITY (LOGIN) -->
+<!-- ========================================== -->
+<div id="vault-auth" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(7,7,7,0.98); z-index:999999; display:flex; justify-content:center; align-items:center; backdrop-filter:blur(10px);">
+    <div id="auth-box" style="width:90%; max-width:400px; background:linear-gradient(145deg, #111, #050505); padding:2.5rem; border-radius:12px; border:1px solid var(--gold); text-align:center; box-shadow: 0 20px 50px rgba(0,0,0,0.9);">
+        <h2 id="auth-title" style="color:var(--gold); font-family:'Cinzel'; margin-bottom:5px; text-transform:uppercase; letter-spacing:2px;">Enter The Syndicate</h2>
+        <p id="auth-subtitle" style="color:#666; font-size:0.85rem; margin-bottom:25px;">Identify yourself to access the ecosystem.</p>
+
+        <!-- Register Form -->
+        <div id="register-form" style="display:none; flex-direction:column; gap:15px;">
+            <input type="text" id="reg-user" placeholder="Create Username (e.g. Leader)" style="padding:15px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:'Montserrat'; outline:none;">
+            <input type="email" id="reg-email" placeholder="Email Address" style="padding:15px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:'Montserrat'; outline:none;">
+            <input type="password" id="reg-pass" placeholder="Create Password" style="padding:15px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:'Montserrat'; outline:none;">
+            <button onclick="executeRegister()" class="btn-gold" style="margin-top:10px;">Forge Identity</button>
+            <p style="color:#888; font-size:0.8rem; margin-top:10px; cursor:pointer;" onclick="toggleAuthMode('login')">Already in the system? <span style="color:var(--gold);">Sign In</span></p>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" style="display:flex; flex-direction:column; gap:15px;">
+            <input type="text" id="log-user" placeholder="Username or Email" style="padding:15px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:'Montserrat'; outline:none;">
+            <input type="password" id="log-pass" placeholder="Password" style="padding:15px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:'Montserrat'; outline:none;">
+            <button onclick="executeLogin()" class="btn-gold" style="margin-top:10px;">Access Vault</button>
+            <p style="color:#888; font-size:0.8rem; margin-top:10px; cursor:pointer;" onclick="toggleAuthMode('register')">New to the empire? <span style="color:var(--gold);">Apply for Access</span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- ADVANCED IDENTITY SYSTEM ---
+    function toggleAuthMode(mode) {
+        if(mode === 'register') {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'flex';
+            document.getElementById('auth-title').innerText = "Join The Syndicate";
+            document.getElementById('auth-subtitle').innerText = "Only the elite survive. Register your identity.";
+        } else {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'flex';
+            document.getElementById('auth-title').innerText = "Enter The Syndicate";
+            document.getElementById('auth-subtitle').innerText = "Identify yourself to access the ecosystem.";
+        }
+    }
+
+    function executeRegister() {
+        const user = document.getElementById('reg-user').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const pass = document.getElementById('reg-pass').value.trim();
+
+        if(!user || !email || !pass) {
+            showToast("All fields are mandatory.", "error");
+            return;
+        }
+
+        // Save to Simulated Local Database
+        const userData = { username: user, email: email, password: pass };
+        localStorage.setItem('shunya_account', JSON.stringify(userData));
+        localStorage.setItem('shunya_user', user); 
+        
+        // Give 50 Coins Signup Bonus automatically
+        if(!localStorage.getItem('shunya_wallet')) {
+            localStorage.setItem('shunya_wallet', 50);
+        }
+
+        showToast("Identity Forged. Welcome to the 1%.", "success");
+        document.getElementById('vault-auth').style.display = 'none';
+        
+        if(typeof injectProfileCard === 'function') injectProfileCard();
+        if(typeof updateWalletUI === 'function') updateWalletUI();
+    }
+
+    function executeLogin() {
+        const userOrEmail = document.getElementById('log-user').value.trim();
+        const pass = document.getElementById('log-pass').value.trim();
+        
+        const savedData = JSON.parse(localStorage.getItem('shunya_account'));
+
+        if(!savedData) {
+            showToast("No identity found. Register first.", "error");
+            return;
+        }
+
+        if((userOrEmail === savedData.username || userOrEmail === savedData.email) && pass === savedData.password) {
+            localStorage.setItem('shunya_user', savedData.username);
+            showToast(`Welcome back, ${savedData.username}.`, "success");
+            document.getElementById('vault-auth').style.display = 'none';
+            if(typeof injectProfileCard === 'function') injectProfileCard();
+        } else {
+            showToast("Access Denied. Incorrect credentials.", "error");
+        }
+    }
+
+    // Secure the vault on load
+    window.addEventListener('DOMContentLoaded', () => {
+        // Remove the old basic overlay if it's still in the HTML
+        const oldAuth = document.getElementById('auth-overlay');
+        if(oldAuth) oldAuth.remove(); 
+
+        // Check if already authenticated
+        if(localStorage.getItem('shunya_account') && localStorage.getItem('shunya_user')) {
+            document.getElementById('vault-auth').style.display = 'none';
+        }
+    });
+</script>
+
 </body>
 </html>
