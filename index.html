@@ -6,6 +6,7 @@
 <title>Common Mistakes at 21</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,95 +15,147 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#111;
+background:#090909;
 color:white;
 }
 
 header{
 background:#000;
-padding:20px;
+padding:25px;
 text-align:center;
 }
 
 header h1{
-font-size:34px;
+font-size:38px;
 color:#FFD700;
 }
 
 header p{
 margin-top:10px;
-color:#ddd;
+font-size:20px;
+color:#bbb;
 }
 
 .hero{
-padding:20px;
+padding:25px;
 text-align:center;
 }
 
-.hero img{
-width:90%;
-max-width:350px;
-border-radius:15px;
-box-shadow:0 0 20px gold;
+.cover{
+width:95%;
+max-width:420px;
+border-radius:18px;
+box-shadow:0 0 30px gold;
 }
 
 .price{
-font-size:32px;
-margin-top:20px;
-color:#00ff99;
+font-size:42px;
 font-weight:bold;
+color:#00ff88;
+margin-top:20px;
 }
 
 .buy{
 display:inline-block;
-margin-top:20px;
-padding:15px 40px;
+margin-top:25px;
+padding:18px 45px;
 background:#ff9800;
 color:white;
+font-size:28px;
+border-radius:14px;
 text-decoration:none;
-font-size:22px;
-border-radius:10px;
+transition:.3s;
 }
 
 .buy:hover{
-background:#ff6600;
+background:#ffb300;
+transform:scale(1.05);
 }
 
-.about{
-padding:25px;
-max-width:900px;
-margin:auto;
-line-height:1.8;
+.section{
+padding:30px;
 }
 
-.about h2{
+.section h2{
 color:#FFD700;
-margin-bottom:10px;
+margin-bottom:20px;
+font-size:34px;
 }
 
+.section p{
+font-size:22px;
+line-height:1.8;
+color:#ddd;
+}
 .qr{
-text-align:center;
-padding:20px;
-}
-
-.qr img{
-width:220px;
+width:250px;
 border-radius:15px;
-background:white;
-padding:10px;
+margin-top:20px;
 }
 
 footer{
-text-align:center;
-padding:20px;
 background:#000;
-color:#aaa;
+padding:30px;
+text-align:center;
+font-size:18px;
+color:#999;
 margin-top:40px;
 }
+
+.admin{
+background:#111;
+padding:30px;
+margin:30px;
+border-radius:15px;
+}
+
+.admin input{
+width:100%;
+padding:15px;
+margin:10px 0;
+font-size:18px;
+}
+
+.admin button{
+padding:15px 30px;
+background:#FFD700;
+border:none;
+font-size:20px;
+cursor:pointer;
+border-radius:10px;
+}
+
+.course{
+background:#1b1b1b;
+padding:20px;
+border-radius:15px;
+margin-top:20px;
+display:none;
+}
+
+.course img{
+width:100%;
+border-radius:10px;
+}
+
+.course h3{
+margin-top:15px;
+font-size:28px;
+}
+
+.course a{
+display:inline-block;
+margin-top:15px;
+padding:12px 30px;
+background:#00c853;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-size:20px;
+}
+
 </style>
-
 </head>
-
 <body>
 
 <header>
@@ -110,55 +163,12 @@ margin-top:40px;
 <p>Author : THE SHUNYA</p>
 </header>
 
-<section class="hero">
+<div class="hero">
 
-<img src="cover.jpg">
+<img src="1_20260710_140904_0000.png" class="cover">
 
 <div class="price">₹99 Only</div>
 
-<a class="buy" href="#payment">
-Buy Now
-</a>
+<a class="buy" href="#pay">Buy Now</a>
 
-</section>
-
-<section class="about">
-
-<h2>About this Ebook</h2>
-
-<p>
-
-Nine months of research.
-120 young adults.
-One conclusion.
-
-This ebook reveals the biggest mistakes people make in their early twenties and how to avoid them.
-
-Learn about money, mindset, career, relationships, discipline and success.
-
-</p>
-
-</section>
-
-<section id="payment" class="qr">
-
-<h2>Scan & Pay</h2>
-
-<br>
-
-<img src="qr.png">
-
-<p style="margin-top:20px;">
-After payment send screenshot on WhatsApp.
-</p>
-
-</section>
-
-<footer>
-
-© 2026 THE SHUNYA
-
-</footer>
-
-</body>
-</html>
+</div>
