@@ -1,736 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE SHUNYA | Digital Ecosystem</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #050505;
-            --card: #111111;
-            --gold: #D4AF37;
-            --gold-glow: rgba(212, 175, 55, 0.2);
-            --text: #FFFFFF;
-            --danger: #ff4444;
-            --success: #4CAF50;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="Common Mistakes at 21 by THE SHUNYA. Master life's pivotal lessons. Premium ebook at ₹19 (80% off). Instant digital download.">
+  <meta name="keywords" content="THE SHUNYA, Common Mistakes at 21, ebook, self help, life lessons, premium ebook, digital product">
+  <meta name="author" content="THE SHUNYA">
+  <meta property="og:title" content="Common Mistakes at 21 | THE SHUNYA">
+  <meta property="og:description" content="Discover the guide to navigating your twenties. Luxurious knowledge for a new generation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yashghodkeofficial-netizen.github.io/ebook-website/">
+  <meta property="og:image" content="https://yashghodkeofficial-netizen.github.io/ebook-website/1_20260710_140904_0000.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Common Mistakes at 21 | THE SHUNYA – Premium Ebook</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+      background: #0a0a0a;
+      color: #e5e0d5;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Montserrat', sans-serif;
-            padding-bottom: 100px;
-            overflow-x: hidden;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gold);
-        }
+    /* premium gold & black palette */
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f0d78c;
+      --dark-bg: #0a0a0a;
+      --card-bg: rgba(20, 20, 20, 0.7);
+      --glass-border: rgba(212, 175, 55, 0.25);
+      --text-dim: #b0a99a;
+    }
 
-        /* Typography & Header */
-        h1,
-        h2,
-        h3 {
-            font-family: 'Cinzel', serif;
-            font-weight: 800;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 5%;
-            border-bottom: 1px solid #222;
-            background: rgba(5, 5, 5, 0.92);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .brand {
-            color: var(--gold);
-            font-size: 1.4rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-        .brand span {
-            color: #fff;
-            font-weight: 300;
-        }
-        .wallet-display {
-            color: var(--gold);
-            font-weight: 600;
-            font-family: monospace;
-            background: #111;
-            padding: 6px 14px;
-            border-radius: 4px;
-            border: 1px solid #333;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .wallet-display:hover {
-            border-color: var(--gold);
-            box-shadow: 0 0 15px var(--gold-glow);
-        }
+    h1, h2, h3 {
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
 
-        /* Layout & Pages */
-        .page {
-            display: none;
-            padding: 30px 5%;
-            animation: fadeIn 0.4s ease;
-        }
-        .page.active {
-            display: block;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
+    /* glassmorphism card */
+    .glass-card {
+      background: rgba(18, 18, 18, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(212, 175, 55, 0.15);
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes pulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        @keyframes coinDrop {
-            0% {
-                opacity: 1;
-                transform: translateY(-20px) scale(0.5);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(80px) scale(1.2);
-            }
-        }
+    /* sticky nav */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 0.8rem 0;
+      transition: all 0.3s ease;
+    }
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-decoration: none;
+      background: linear-gradient(135deg, #f0d78c, #b4942e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
 
-        /* Asset Cards */
-        .card {
-            background: var(--card);
-            border: 1px solid #222;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px var(--gold-glow);
-        }
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-bottom: 2px solid #222;
-            transition: 0.3s;
-        }
-        .card:hover img {
-            border-bottom-color: var(--gold);
-        }
-        .card-body {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .card-title {
-            margin-bottom: 6px;
-            color: var(--text);
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        .card-subtitle {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 12px;
-        }
-        .price-tag {
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            color: #888;
-            font-family: monospace;
-        }
-        .reward-tag {
-            font-size: 0.85rem;
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
+    /* buttons */
+    .btn-gold {
+      background: linear-gradient(145deg, #d4af37, #b4942e);
+      border: none;
+      padding: 0.8rem 2.2rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      color: #0a0a0a;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 18px rgba(212, 175, 55, 0.3);
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1rem;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(145deg, #e5c45e, #c9a733);
+    }
 
-        .badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--gold);
-            color: #000;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .badge.completed {
-            background: #2e7d32;
-            color: #fff;
-        }
-        .badge.owned {
-            background: #1a237e;
-            color: #fff;
-        }
+    .btn-outline-gold {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.7rem 2rem;
+      border-radius: 3rem;
+      font-weight: 500;
+      transition: all 0.25s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-outline-gold:hover {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: #f0d78c;
+    }
 
-        /* Buttons */
-        .btn-gold {
-            background: linear-gradient(135deg, #B8860B, #D4AF37);
-            color: #000;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-weight: 800;
-            cursor: pointer;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-        }
-        .btn-gold:hover {
-            filter: brightness(1.2);
-            box-shadow: 0 0 20px var(--gold-glow);
-            transform: scale(1.02);
-        }
-        .btn-gold:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        .btn-dark {
-            background: #161616;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .btn-dark:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            background: #1a1a1a;
-        }
-        .btn-danger {
-            background: #b71c1c;
-            border: none;
-            color: #fff;
-            padding: 10px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-        }
-        .btn-danger:hover {
-            background: #d32f2f;
-            transform: scale(1.02);
-        }
+    /* hero */
+    .hero {
+      padding: 8rem 0 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+    }
+    .hero-content {
+      flex: 1 1 400px;
+    }
+    .hero-image {
+      flex: 1 1 350px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-image img {
+      max-width: 320px;
+      width: 100%;
+      border-radius: 2rem;
+      box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      transition: transform 0.4s;
+    }
+    .hero-image img:hover {
+      transform: scale(1.02);
+    }
+    .premium-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold-light);
+      padding: 0.3rem 1.2rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      border: 1px solid var(--gold);
+    }
+    .price-section {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin: 1.8rem 0;
+    }
+    .original-price {
+      font-size: 1.8rem;
+      text-decoration: line-through;
+      color: #7a7568;
+    }
+    .discount-price {
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .offer-badge {
+      background: #c42e2e;
+      color: white;
+      padding: 0.4rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+    .countdown {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #d4af37;
+      font-weight: 500;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-        /* Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.96);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-around;
-            padding: 14px 0;
-            border-top: 1px solid #222;
-            z-index: 1000;
-        }
-        .nav-item {
-            cursor: pointer;
-            color: #555;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            position: relative;
-        }
-        .nav-item .nav-icon {
-            font-size: 1.2rem;
-        }
-        .nav-item.active {
-            color: var(--gold);
-            text-shadow: 0 0 10px var(--gold-glow);
-        }
-        .nav-item:hover {
-            color: #fff;
-        }
-        .nav-item .nav-badge {
-            position: absolute;
-            top: -6px;
-            right: -10px;
-            background: #ff4444;
-            color: #fff;
-            font-size: 0.55rem;
-            padding: 1px 6px;
-            border-radius: 10px;
-            font-weight: 800;
-        }
+    /* section titles */
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      color: #f0d78c;
+      position: relative;
+      font-weight: 500;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.8rem auto 0;
+    }
 
-        /* Modals & Overlays */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(8px);
-        }
-        .overlay.active {
-            display: flex;
-        }
-        .modal-box {
-            background: var(--card);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border: 1px solid #333;
-            max-width: 480px;
-            width: 92%;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
-            position: relative;
-            animation: fadeIn 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .modal-box h2 {
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-        .modal-box .close-btn {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: #666;
-            font-size: 1.4rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .modal-box .close-btn:hover {
-            color: #fff;
-        }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
 
-        /* Toast Notifications */
-        #toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            pointer-events: none;
-            max-width: 360px;
-            width: 90%;
-        }
-        .toast {
-            padding: 14px 18px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            transform: translateX(120%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid;
-            pointer-events: auto;
-        }
-        .toast.show {
-            transform: translateX(0);
-        }
-        .toast.success {
-            background: #0a0a0a;
-            color: var(--gold);
-            border-color: var(--gold);
-        }
-        .toast.error {
-            background: #0a0a0a;
-            color: var(--danger);
-            border-color: var(--danger);
-        }
-        .toast.info {
-            background: #0a0a0a;
-            color: #64b5f6;
-            border-color: #64b5f6;
-        }
+    .feature-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 1.8rem;
+      padding: 2rem 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 20px 30px rgba(212, 175, 55, 0.15);
+    }
 
-        /* Wallet Dashboard */
-        .dashboard-panel {
-            padding: 40px 30px;
-            background: #0a0a0a;
-            border: 1px solid #222;
-            border-radius: 8px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .dashboard-panel::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, var(--gold-glow), transparent 70%);
-            opacity: 0.05;
-            pointer-events: none;
-        }
-        .rank-display {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: #888;
-            letter-spacing: 2px;
-            margin-top: 8px;
-        }
-        .rank-bar {
-            width: 100%;
-            height: 4px;
-            background: #222;
-            border-radius: 2px;
-            margin-top: 16px;
-            overflow: hidden;
-        }
-        .rank-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #B8860B, #D4AF37);
-            border-radius: 2px;
-            transition: width 0.6s ease;
-        }
-        .rank-progress-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.6rem;
-            color: #555;
-            margin-top: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .review-card {
+      background: rgba(25, 25, 25, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      border: 1px solid #2e2a1f;
+    }
 
-        /* Transaction History */
-        .tx-list {
-            margin-top: 12px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .tx-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #1a1a1a;
-            font-size: 0.8rem;
-            font-family: monospace;
-        }
-        .tx-item .tx-amount {
-            font-weight: 700;
-        }
-        .tx-item .tx-amount.positive {
-            color: var(--gold);
-        }
-        .tx-item .tx-amount.negative {
-            color: var(--danger);
-        }
-        .tx-item .tx-date {
-            color: #555;
-            font-size: 0.7rem;
-        }
+    /* QR section */
+    .qr-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+      justify-content: center;
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(16px);
+      border-radius: 2rem;
+      padding: 2.5rem;
+      border: 1px solid var(--gold);
+    }
+    .qr-container img {
+      width: 200px;
+      border-radius: 1.5rem;
+      border: 2px solid var(--gold);
+    }
 
-        /* Admin Panel */
-        .admin-panel {
-            margin-top: 40px;
-            padding: 30px;
-            background: #080808;
-            border: 1px solid #222;
-            border-left: 3px solid var(--gold);
-            border-radius: 4px;
-        }
-        .admin-panel h3 {
-            color: var(--gold);
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-        .admin-panel .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .admin-panel input,
-        .admin-panel select {
-            padding: 12px;
-            background: #111;
-            border: 1px solid #333;
-            color: #fff;
-            border-radius: 4px;
-            outline: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            width: 100%;
-        }
-        .admin-panel input:focus,
-        .admin-panel select:focus {
-            border-color: var(--gold);
-        }
-        .admin-panel input::placeholder {
-            color: #555;
-        }
-        .admin-panel .full-width {
-            grid-column: span 2;
-        }
+    .faq-item {
+      border-bottom: 1px solid #2e2a1f;
+      padding: 1.2rem 0;
+      cursor: pointer;
+    }
 
-        /* My Assets */
-        .asset-chip {
-            display: inline-block;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: #aaa;
-            margin: 4px;
-        }
-        .asset-chip .chip-gold {
-            color: var(--gold);
-        }
+    .sticky-buy {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      background: #0a0a0a;
+      padding: 0.4rem 1.8rem;
+      border-radius: 3rem;
+      box-shadow: 0 10px 25px rgba(212,175,55,0.5);
+      border: 1px solid var(--gold);
+      backdrop-filter: blur(14px);
+      background: rgba(10,10,10,0.8);
+    }
 
-        /* Mission / Daily Task */
-        .mission-card {
-            background: var(--card);
-            border: 1px solid #222;
-            border-radius: 8px;
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: 0.3s;
-            margin-bottom: 12px;
-        }
-        .mission-card:hover {
-            border-color: var(--gold);
-        }
-        .mission-card .mission-info h4 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-        .mission-card .mission-info p {
-            font-size: 0.8rem;
-            color: #666;
-        }
-        .mission-card .mission-reward {
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-        .mission-card .mission-btn {
-            min-width: 100px;
-        }
+    .floating-wa {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1100;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-        /* Coin animation */
-        .coin-float {
-            position: fixed;
-            font-size: 2rem;
-            pointer-events: none;
-            z-index: 9998;
-            animation: coinDrop 1s ease-out forwards;
-        }
+    footer {
+      border-top: 1px solid rgba(212,175,55,0.3);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: #8b8b8b;
+    }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            header {
-                padding: 0.8rem 4%;
-            }
-            .brand {
-                font-size: 1.1rem;
-            }
-            .wallet-display {
-                font-size: 0.75rem;
-                padding: 4px 10px;
-            }
-            .page {
-                padding: 16px 4%;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .dashboard-panel {
-                padding: 24px 16px;
-            }
-            .admin-panel .form-row {
-                grid-template-columns: 1fr;
-            }
-            .admin-panel .full-width {
-                grid-column: span 1;
-            }
-            .modal-box {
-                padding: 1.5rem;
-                width: 95%;
-            }
-            .mission-card {
-                flex-direction: column;
-                gap: 12px;
-                align-items: stretch;
-                text-align: center;
-            }
-            .mission-card .mission-btn {
-                width: 100%;
-            }
-            #toast-container {
-                top: 10px;
-                right: 10px;
-                width: 95%;
-            }
-        }
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.8rem;
+      }
+      .hero {
+        padding-top: 6rem;
+        flex-direction: column;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
 
-        /* Small utility */
-        .text-gold {
-            color: var(--gold);
-        }
-        .text-muted {
-            color: #666;
-        }
-        .mt-12 {
-            margin-top: 12px;
-        }
-        .mt-20 {
-            margin-top: 20px;
-        }
-        .mb-12 {
-            margin-bottom: 12px;
-        }
-        .flex-center {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .gap-8 {
-            gap: 8px;
-        }
-        .fw-800 {
-            font-weight: 800;
-        }
-
-        /* Quiz modal specific */
-        .quiz-option-btn {
-            text-align: left;
-            font-size: 0.9rem;
-            padding: 12px 16px;
-            background: #161616;
-            border: 1px solid #333;
-            color: #fff;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-        }
-        .quiz-option-btn:hover {
-            border-color: var(--gold);
-            background: #1a1a1a;
-        }
-        .quiz-option-btn.correct {
-            border-color: #4CAF50;
-            background: #1a3a1a;
-        }
-        .quiz-option-btn.wrong {
-            border-color: var(--danger);
-            background: #3a1a1a;
-        }
-        .quiz-option-btn:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-    </style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
+  <!-- Sticky Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="#" class="logo">THE SHUNYA</a>
+      <div class="nav-links">
+        <a href="#why">Why</a>
+        <a href="#learn">Learn</a>
+        <a href="#preview">Preview</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <header>
-        <div class="brand">THE <span>SHUNYA</span></div>
-        <div class="wallet-display" id="header-wallet" onclick="switchTab('wallet', document.querySelector('.nav-item[data-tab=\'wallet\']'))">
-            🪙 <span id="header-balance">0</span>
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content reveal">
+        <span class="premium-badge">✦ PREMIUM EBOOK</span>
+        <h1 style="font-size: 3.2rem; line-height: 1.2; margin: 0.5rem 0 1rem;">Common Mistakes at 21</h1>
+        <p style="font-size: 1.2rem; color: #c0b69c; max-width: 500px; margin-bottom: 1.8rem;">A timeless guide to mastering your twenties. Written by <strong>THE SHUNYA</strong> for those who seek clarity.</p>
+        
+        <div class="price-section">
+          <span class="original-price">₹99</span>
+          <span class="discount-price">₹19</span>
+          <span class="offer-badge">🚀 80% OFF LAUNCH</span>
         </div>
-    </header>
+        
+        <div class="countdown" id="countdown">
+          <span>⏳ Offer ends in: <strong id="timer">00h 00m 00s</strong></span>
+        </div>
+        
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#payment" class="btn-gold">Buy Now – ₹19</a>
+          <a href="#preview" class="btn-outline-gold">Look Inside</a>
+        </div>
+      </div>
+      <div class="hero-image reveal">
+        <img src="1_20260710_140904_0000.png" alt="Common Mistakes at 21 Ebook Cover" loading="eager">
+      </div>
+    </section>
 
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <div class="container">
-            <h1 style="font-size: 2.2rem; margin-bottom: 6px;">Welcome,
+    <!-- Why Read This Book -->
+    <section id="why" class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">Why Read This Book</h2>
+      <div class="grid-3">
+        <div class="feature-card">
+          <h3 style="color: var(--gold);">🧠 Avoid Regrets</h3>
+          <p>Insights distilled from real experiences to help you dodge life's early pitfalls.</p>
+        </div>
+        <div class="feature-card">
+          <h3 style="color: var(--gold);">📈 Build Discipline</h3>
+          <p>Practical frameworks for mental clarity and financial wisdom at a young age.</p>
+        </div>
+        <div class="feature-card">
+          <h3 style="color: var(--gold);">✨ Timeless Wisdom</h3>
+          <p>Not just advice—principles that stay relevant through every decade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section id="learn" class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">What You'll Learn</h2>
+      <div class="grid-3">
+        <div class="feature-card">
+          <h3>💡 Mindset Shifts</h3>
+          <p>Overcome limiting beliefs and build a growth-oriented identity.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💰 Money Mistakes</h3>
+          <p>Early career finance traps and how to build savings effortlessly.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🤝 Relationships</h3>
+          <p>Navigate friendships, love, and networking with emotional intelligence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">Benefits</h2>
+      <div class="glass-card" style="padding: 2.5rem; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+        <div style="flex: 1; min-width: 200px;"><span style="font-size: 2rem;">📖</span><br><strong>Instant PDF</strong><br>Read on any device</div>
+        <div style="flex: 1; min-width: 200px;"><span style="font-size: 2rem;">🔒</span><br><strong>Lifetime Access</strong><br>One-time purchase</div>
+        <div style="flex: 1; min-width: 200px;"><span style="font-size: 2rem;">⚡</span><br><strong>Actionable</strong><br>No fluff, pure value</div>
+      </div>
+    </section>
+
+    <!-- Ebook Preview -->
+    <section id="preview" class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">Ebook Preview</h2>
+      <div class="glass-card" style="padding: 2rem; text-align: center;">
+        <img src="1_20260710_140904_0000.png" alt="Preview pages" style="max-width: 280px; border-radius: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 15px 30px rgba(0,0,0,0.7);">
+        <p style="color: #ccc;">Clean, minimal design crafted for deep reading. Sample chapter included.</p>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">Reader Reviews</h2>
+      <div class="grid-3">
+        <div class="review-card">
+          <p>"Crisp and transformative. Every 21-year-old needs this."</p>
+          <p style="color: var(--gold); margin-top: 1rem;">— Rohan M.</p>
+        </div>
+        <div class="review-card">
+          <p>"THE SHUNYA delivers pure clarity. Worth 10x the price."</p>
+          <p style="color: var(--gold); margin-top: 1rem;">— Ananya K.</p>
+        </div>
+        <div class="review-card">
+          <p>"I avoided so many mistakes after reading. Gold."</p>
+          <p style="color: var(--gold); margin-top: 1rem;">— Vikram S.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">FAQ</h2>
+      <div class="glass-card" style="padding: 1.8rem;">
+        <div class="faq-item"><strong>📌 Is this a physical book?</strong> No, it's a digital PDF delivered instantly.</div>
+        <div class="faq-item"><strong>📌 How do I get the ebook after payment?</strong> Scan QR, pay ₹19, then click WhatsApp button to send screenshot.</div>
+        <div class="faq-item"><strong>📌 Can I read on mobile?</strong> Yes, PDF works on all devices.</div>
+      </div>
+    </section>
+
+    <!-- About THE SHUNYA -->
+    <section class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">About THE SHUNYA</h2>
+      <div class="glass-card" style="padding: 2rem; text-align: center; max-width: 700px; margin: 0 auto;">
+        <p style="font-size: 1.2rem;">THE SHUNYA is a digital brand crafting minimalist wisdom for modern minds. We believe in zero fluff, maximum impact.</p>
+      </div>
+    </section>
+
+    <!-- More Ebooks & Video Courses -->
+    <section class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">More Ebooks</h2>
+      <div class="grid-3">
+        <div class="feature-card"><h3>📘 Mindful Living</h3><p>Coming soon</p></div>
+        <div class="feature-card"><h3>📗 Financial Clarity</h3><p>Coming soon</p></div>
+        <div class="feature-card"><h3>📙 Deep Focus</h3><p>Coming soon</p></div>
+      </div>
+      <div style="margin-top: 3rem;">
+        <h2 class="section-title">Video Courses <span style="font-size: 1rem; background: #333; padding:0.2rem 1rem; border-radius:2rem;">Coming Soon</span></h2>
+        <p style="text-align: center; color: #aaa;">Premium video experiences under development.</p>
+      </div>
+    </section>
+
+    <!-- QR Payment Section -->
+    <section id="payment" class="reveal" style="margin: 5rem 0;">
+      <h2 class="section-title">Complete Payment</h2>
+      <div class="qr-container">
+        <div>
+          <img src="IMG_20260710_151721.png" alt="Payment QR Code" style="width: 200px;">
+          <p style="margin-top: 1rem; color: var(--gold);">Scan & Pay ₹19</p>
+        </div>
+        <div style="max-width: 350px;">
+          <h3 style="color: var(--gold-light);">🔐 Secure UPI Payment</h3>
+          <ol style="margin: 1rem 0; padding-left: 1.2rem; color: #ccc;">
+            <li>Open any UPI app</li>
+            <li>Scan the QR code</li>
+            <li>Pay exactly ₹19</li>
+            <li>Click WhatsApp button below</li>
+          </ol>
+          <p style="font-size: 0.9rem; color: #8b8b8b;">🔒 Payment secured • Instant delivery</p>
+          <a href="https://wa.me/919XXXXXXXXX?text=Hi%20THE%20SHUNYA%2C%20I%20have%20paid%20%E2%82%B919%20for%20Common%20Mistakes%20at%2021.%20Please%20send%20my%20ebook." target="_blank" class="btn-gold" style="margin-top: 1.2rem; background: #25D366; color: white;">📱 WhatsApp After Payment</a>
+          <p style="font-size: 0.8rem; margin-top: 0.6rem;">(Replace number with your WhatsApp)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="reveal" style="margin: 5rem 0; text-align: center;">
+      <h2 class="section-title">Contact</h2>
+      <p>Email: theshunya@wisdom.com  |  Instagram: @theshunya</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 THE SHUNYA. All rights reserved. Crafted for digital seekers.</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem;">Privacy | Terms | Refund Policy</p>
+    </div>
+  </footer>
+
+  <!-- Sticky Buy Now & Floating WhatsApp -->
+  <div class="sticky-buy">
+    <a href="#payment" class="btn-gold" style="padding: 0.6rem 2rem; font-size: 0.95rem;">Buy for ₹19</a>
+  </div>
+  <a href="https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20need%20help%20with%20the%20ebook." target="_blank" class="floating-wa" aria-label="WhatsApp">💬</a>
+
+  <script>
+    // Countdown timer (set to 3 days from now for offer)
+    function startCountdown() {
+      const endDate = new Date();
+      endDate.setDate(endDate.getDate() + 3);
+      
+      function updateTimer() {
+        const now = new Date();
+        const diff = endDate - now;
+        if (diff <= 0) {
+          document.getElementById('timer').textContent = '00h 00m 00s';
+          return;
+        }
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('timer').textContent = 
+          `${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+      }
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+    window.addEventListener('DOMContentLoaded', startCountdown);
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          
